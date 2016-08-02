@@ -1,0 +1,15 @@
+*.idea/*
+*.log
+*.DS_Store
+*Thumbs.db
+*.sass-cache/
+node_modules
+craft/app/
+craft/storage/
+craft/config/license.key
+*.css
+public/assets/imgs/
+public/fonts/
+public/css/
+db_backups
+vendor

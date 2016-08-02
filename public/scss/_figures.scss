@@ -1,0 +1,59 @@
+figure{
+  position: relative;
+
+  img{
+    display: block;
+    border-radius: 3px;
+  }
+
+  // If there's no background color, 
+  // ensure caption legibility for overlay text.
+  &.overlay-caption{
+    &:after{
+      background: rgba(0,0,0,0.25);
+    }
+  }
+
+  &:before,
+  &:after{
+    border-radius: 3px;
+  }
+}
+
+figcaption{
+  font-style: italic;
+  font-size: scale(-1);
+  color: color(dark-gray);
+
+  .overlay-caption & {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+
+    padding: scale(3);
+    display: block;
+
+    text-align: center;
+    font-size: scale(1);
+    font-style: normal;
+
+    color: color(white);
+    background: none;
+
+    @include media(medium){
+      font-size: scale(2);
+      padding: scale(5);
+    }
+
+    @include media(large){
+      right: auto;
+      padding: scale(7);
+      font-size: scale(3);
+      max-width: 100%;
+    }
+  }
+}

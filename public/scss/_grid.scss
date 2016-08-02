@@ -1,0 +1,30 @@
+.grid{
+  @include container(scale(14));
+}
+
+@include media(medium){
+  %col{
+    margin-top: 0;
+  }
+
+  .col-1{
+    @extend %col;
+    @include span(1);
+  }
+
+  @for $i from 2 through 4 {
+    .col-#{$i}{
+      @extend %col;
+      @include span((12/$i));
+    }
+
+    .col-#{$i}-2{
+      @extend %col;
+      @include span((12/$i*2));
+    }
+    .col-#{$i}-3{
+      @extend %col;
+      @include span((12/$i*3));
+    }
+  }
+}

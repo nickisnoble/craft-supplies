@@ -1,0 +1,35 @@
+.article{
+  margin-bottom: scale(3);
+}
+
+.read-more{
+  margin-top: 0;
+  white-space: nowrap;
+}
+
+.article-topics{
+  list-style: none;
+  margin-left: 0;
+  padding-left: 0;
+
+  &, a{
+    color: color(gray);
+  }
+  
+  a:hover{
+    color: color(secondary);
+  }
+
+  li{
+    display: inline;
+    &:after{
+      content: ", "
+    }
+    &:last-child,
+    &:first-child{
+      &:after{
+        content: "";
+      }
+    }
+  }
+}

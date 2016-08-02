@@ -1,0 +1,66 @@
+// Functions
+// ===========
+
+// Color
+// -------
+
+@function color($c) {
+  @if not map-has-key($color-map, $c) {
+    @warn "color(#{$c}) is undefined. Set a value in _settings.scss. ";
+    @return color(white);
+  }
+
+  @return map-get($color-map, $c);
+}
+
+
+// Type
+// ------
+
+@function scale($number){
+  $result: rem(ms($number));
+
+  @return $result;
+}
+
+
+// Utility
+// ---------
+
+// Units
+
+@function strip-unit($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+
+  @return $number;
+}
+
+@function px($n) {
+  $result: 1px * strip-unit($n);
+  @return $result;
+}
+
+@function rem($n) {
+  $result: 1rem * strip-unit($n) / strip-unit($ms-base);
+  @return $result;
+}
+
+// Basic math
+
+@function quarter($number) {
+    @return round($number / 4);
+}
+
+@function half($number) {
+    @return round($number / 2);
+}
+
+@function double($number) {
+    @return round($number * 2);
+}
+
+@function quadruple($number) {
+    @return round($number * 4);
+}

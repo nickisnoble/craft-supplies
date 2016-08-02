@@ -1,0 +1,69 @@
+// Settings.scss
+// ===============
+//
+// This is all the settings for the project that effect multiple files.
+//
+
+
+// Color
+// -------
+
+// Brand Palette
+// (This is just for utility within settings, to match the brand guide)
+
+$brand: #0074D9;
+$brand-alt: #39CCCC;
+
+$black: #111;
+$silver: #ccc;
+$white: #fff;
+
+
+// Working Palette
+
+$color-map: (
+  primary:     $brand,
+  secondary:   $brand-alt,
+  black:       $black,
+  dark-gray:   darken($silver, 20%),
+  gray:        darken($silver, 10%),
+  light-gray:  $silver,
+  white:       $white
+);
+
+// Type
+// ------
+
+$serif: georgia, serif;
+$sans: helvetica, sans;
+
+// Modular scale settings
+// - tweak these two values and all your spacing is finished!
+$ms-base: 16; // base font size
+$ms-ratio: $fourth; // multiple to scale by
+
+
+// Layout
+// --------
+
+// Grid settup 
+
+$susy: (
+  columns: 12,
+  gutters: .5,
+  gutter-position: split,
+  math: fluid,
+  global-box-sizing: border-box,
+  debug: (
+    // image: show
+  )
+);
+
+$breakpoints: (
+    "tiny"   "screen and (max-width: 340px)",
+    "small"   "screen and (max-width: 44.9375em)",
+    "medium"  "screen and (min-width: 45em)",
+    "large"  "screen and (min-width: 64em)",
+    "x-large"   "screen and (min-width: 75em)",
+    "retina"  "(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx)"
+);

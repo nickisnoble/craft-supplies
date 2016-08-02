@@ -1,0 +1,99 @@
+/* Elements */
+
+hr{
+  border: none;
+  height: 1px;
+  background: color(light-gray);
+  margin: unit(2) auto;
+  text-align: center;
+}
+
+img, 
+canvas, 
+iframe, 
+video, 
+svg, 
+select, 
+textarea { 
+  max-width: 100%; 
+  height: auto;
+}
+
+table {
+  // Remove spacing between table cells (from Normalize.css) 
+  border-collapse: collapse;
+  border-spacing: 0;
+  empty-cells: show;
+  border: 1px solid color(light-gray);
+}
+
+caption {
+  color: color(black);
+  font: italic 85%/1 arial, sans-serif;
+  padding: 1em 0;
+  text-align: center;
+}
+
+td,
+th {
+    border-left: 1px solid color(light-gray); // inner column border 
+    border-bottom: 1px solid color(light-gray); 
+    border-width: 0 0 1px 1px;
+    font-size: inherit;
+    margin: 0;
+    overflow: visible; // to make this where the title is really long work
+    padding: 0.5em 1em; // cell padding 
+
+    // Consider removing this next declaration block, as it causes problems when
+    // there's a rowspan on the first cell. Case added to the tests. PureCSS issue#432 
+    &:first-child {
+        border-left-width: 0;
+    }
+}
+
+thead, th {
+    background-color: #eee;
+    color: color(black);
+    text-align: left;
+    vertical-align: bottom;
+}
+
+td {
+  background-color: transparent;
+}
+
+// nth-child selector for modern browsers 
+tr:nth-child(2n-1) td {
+  background-color: #f2f2f2;
+}
+
+tbody > tr:last-child > td {
+  border-bottom-width: 0;
+}
+
+// Utilities
+// -----------
+
+// Wrap tables or pre elements in a div with this class 
+.overflow-container {
+  overflow-x: scroll;
+}
+
+
+//  Aspect ratios for media objects i.e canvas, iframe, video, svg etc. Defaults to 16x9.
+.aspect-ratio_wrapper {
+  height: 0;
+  padding-top: 56.25%;
+  position: relative;
+}
+
+.aspect-ratio_target {
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+}

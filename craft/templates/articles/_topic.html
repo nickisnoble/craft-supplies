@@ -1,0 +1,43 @@
+{#
+ # Topic index template
+ # -------------------
+ #
+ # This template is loaded whenever http://example.com/articles/{topicname} is
+ # requested.
+ #
+ # See this page for more details on how Craft routes requests:
+ # http://craftcms.com/docs/routing
+ #}
+
+{% set topic = craft.tags.slug(slug).first() %}
+
+{% if not topic %}{% exit 404 %}{% endif %}
+
+{% extends "_layout" %}
+{% set title = "Articles on " ~ topic.title %}
+
+{% block content %}
+  <div class="container">
+
+    <h1>Articles on {{ topic.title }}</h1>
+
+    {% for entry in craft.entries.section('articles').relatedTo(topic).limit(null) %}
+
+      <article class="article">
+        <h2 class="article-title"><a href="{{ entry.url }}">{{ entry.title }}</a></h2>
+        <p class="article-excerpt">{{ entry.excerpt|replace('<br>', " ")|replace('<p>', " ")|replace('</p>', " ")|trim|raw }} <a class="read-more" href="{{ entry.url }}">Continue reading »</a></p>
+
+        {% if entry.topics|length %}
+          <ul class="article-topics">
+            <li><small><strong>TOPICS:</strong></small></li>
+            {% for topic in entry.topics %}
+              <li><a href="{{ siteUrl }}articles/topics/{{ topic|kebab }}">{{ topic }}</a></li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </article>
+
+    {% endfor %}
+
+  </div>
+{% endblock %}

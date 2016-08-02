@@ -1,0 +1,13 @@
+{
+  "name": "craft-supplies",
+  "version": "0.1.0",
+  "description": "A boilerplate for new Craft CMS projects, with Homestead, Gulp, and Capistrano.",
+  "devDependencies": {
+    "bower": "^1.7.9",
+    "browser-sync": "^2.12.7",
+    "es6-promise": "^3.1.2",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-sass": "^2.3.1"
+  }
+}

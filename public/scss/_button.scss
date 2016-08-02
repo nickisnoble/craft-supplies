@@ -1,0 +1,23 @@
+.button{
+  display: inline-block;
+  color: color(white);
+  background: color(primary);
+  padding: scale(0);
+  border-radius: 6px;
+  font-family: $sans;
+  margin-top: scale(4);
+  transition: box-shadow 300ms;
+
+  &.button-alt{
+    background: color(secondary);
+  }
+
+  &:hover{
+    color: color(white);
+  }
+}
+
+.button-wrap {
+  text-align: center;
+  margin-bottom: scale(5);
+}

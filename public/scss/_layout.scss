@@ -1,0 +1,36 @@
+#wrapper{
+  margin: 0;
+}
+
+#content{
+  // Make footer stick to bottom. Subtract height of header + footer + bottom margin.
+  min-height: calc(100vh - #{scale(6) + scale(5) + scale(9)});
+  margin-bottom: scale(9);
+  padding-top: 0.1px; // hack to avoid margin collapse. 0.1px should round to 0 on rendering.
+}
+
+.container{
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// Layouts 
+
+.full{
+  margin: scale(3) -6%;
+  width: 100vw; 
+}
+
+.pull-left, 
+.pull-right{
+  width: calc(50% - #{scale(1)}); // account for gutter
+}
+
+.pull-left{
+  float: left;
+}
+
+.pull-right{
+  float: right;
+}

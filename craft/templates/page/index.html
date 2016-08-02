@@ -1,0 +1,22 @@
+{#
+ # Process page template
+ # --------------------------
+ #
+ # This template should get loaded for any generic single.
+ #
+ # See this page for more details on how Craft routes requests:
+ # http://craftcms.com/docs/routing
+ #}
+
+{% extends "_layout" %}
+
+{% block content %}
+  <div class="container">
+    
+    <h1>{{ entry.displayTitle }}</h1>
+
+    {% include "_includes/body_matrix" %}
+
+  </div>
+
+{% endblock %}

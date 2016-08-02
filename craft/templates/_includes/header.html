@@ -1,0 +1,27 @@
+{% cache %}
+
+{# Define the site navigation #}
+{% set nav = {
+  home:     { title: "Home" },
+  services: { title: "Our Services" },
+  articles: { title: "Latest Articles" },
+  about:    { title: "About Us" },
+  contact:  { title: "Get in touch" }
+} %}
+
+<header id="header">
+
+    <a href="#menu" class="menu-toggle">Menu</a>
+    <nav role="navigation">
+      <ul class="nav navbar">
+        {% for slug, item in nav %}
+          <li>
+            <a href="{{ url(slug) }}" {% if craft.request.firstSegment == slug %}class="active"{% endif %}>{{ item.title|raw }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </nav>
+    
+</header>
+
+{% endcache %}

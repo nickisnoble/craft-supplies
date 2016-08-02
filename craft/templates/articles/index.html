@@ -1,0 +1,47 @@
+{#
+ # Article index template
+ # -------------------
+ #
+ # This template is loaded whenever http://example.com/articles is
+ # requested, because it is located at articles/index.html in your
+ # craft/templates/ folder.
+ #
+ # See this page for more details on how Craft routes requests:
+ # http://craftcms.com/docs/routing
+ #}
+
+{% extends "_layout" %}
+{% set title = "Articles" %}
+
+{% set articles = craft.entries.section('articles') %}
+{% set events = craft.entries.section('events') %}
+
+{% block content %}
+  <div class="{% if events|length %}grid{% else %}container{% endif %}">
+
+    <!-- Articles -->
+
+  	<h1>{{ entry.displayTitle }}</h1>
+
+    <hr>
+
+  	{% for article in articles %}
+
+  		<article class="article">
+  			<h2 class="article-title"><a href="{{ article.url }}">{{ article.title }}</a></h2>
+  			<p class="article-excerpt">{{ article.excerpt|replace('<br>', " ")|replace('<p>', " ")|replace('</p>', " ")|trim|raw }} <a class="read-more" href="{{ article.url }}">Continue reading »</a></p>
+
+        {% if article.topics|length %}
+          <ul class="article-topics">
+            <li><em>Topics:</em></li>
+            {% for topic in article.topics %}
+              <li><a href="{{ siteUrl }}articles/topics/{{ topic|kebab }}">{{ topic }}</a></li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+  		</article>
+
+  	{% endfor %}
+
+  </div>
+{% endblock %}

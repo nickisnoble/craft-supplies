@@ -1,0 +1,48 @@
+{#
+ # Layout template
+ # ---------------
+ #
+ # This template defines your site’s global layout. It can be
+ # “extended” by other templates to fill in the gaps.
+ #
+ # See Twig’s Template Inheritance documentation for more details:
+ # http://twig.sensiolabs.org/doc/templates.html#template-inheritance
+ #}
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+	<meta charset="utf-8" />
+	<title>{% if title is defined %}{{ title }} - {% endif %}{{ siteName }}</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="home" href="{{ siteUrl }}" />
+	<link href="{{ siteUrl }}css/style.css" rel="stylesheet">
+</head>
+
+<body {% if bodyClass is defined %}class="{{ bodyClass }}"{% endif %}>
+
+	{# Put analytics here! #}
+
+	{# Set the `bodyClass` variable to the entry's section handle if there is one, or the first URI segment (this is used by the parent template) #}
+	{% if bodyClass is not defined %}
+		{% set bodyClass = entry is defined ? entry.section.handle : craft.request.firstSegment %}
+	{% endif %}
+
+	<div id="wrapper">
+
+		{% include "_includes/header" %}
+
+		<main id="content" role="main">
+			{% block content %}
+				<p>If you see me, you haven’t set your <code>{% verbatim %}{% block content %}…{% endblock %}{% endverbatim %}</code> yet.</p>
+				<p>See Twig’s <a href="http://twig.sensiolabs.org/doc/templates.html#template-inheritance">Template Inheritance</a> documentation for an explanation.</p>
+			{% endblock %}
+		</main>
+		
+		{% include "_includes/footer" %}
+
+	</div>
+
+	<script src="{{ siteUrl }}js/scripts.js"></script>
+</body>
+</html>

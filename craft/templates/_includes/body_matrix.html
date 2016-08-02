@@ -1,0 +1,57 @@
+{#
+ # Body include template
+ # -----------------------------
+ #
+ # This template is used to output HTML for the "Body" Matrix field.
+ #
+ # An `entry` variable is expected to be defined.
+-#}
+
+{% set blocks = entry.bodyMatrix %}
+
+{% for i, block in blocks %}
+  
+  {% switch block.type %}
+
+    {% case "text" %}
+    
+      {{ block.text }}
+
+    {% case "quote" %}
+
+      <blockquote>
+        <p>{{ block.quotation }}</p>
+        {% if block.attribution %}
+          <cite>{{ block.attribution|raw }}</cite>
+        {% endif %}
+      </blockquote>
+
+    {% case "image" %}
+      {% set image = block.image.first() %}
+      
+      <figure class="{% if block.overlay %}{{ block.overlay }}{% endif %} {% if block.overlayCaption %}overlay-caption{% endif %}">
+        <img src="{{ image.url }}" alt="{{ image.title }}">
+
+        {% if block.caption %}
+          
+          <figcaption>{{ block.caption }}</figcaption>
+
+        {% endif %}
+      </figure>
+
+    {% case "button" %}
+
+      <div class="button-wrap">
+
+        <a class="button {{ block.color }}" {% if block.newTab %}target="_blank"{% endif %} href="{{ block.buttonUrl }}">{{ block.text }}</a>
+
+      </div>
+
+    {% default %} {# Ideally, this will never show... Unless the user has a block we haven't marked up here. #}
+
+      <p>A font walks into a bar.</p>
+      <p>The bartender says, “Hey, we don’t serve your <em>type</em> in here!”</p>
+
+  {% endswitch %}
+  
+{% endfor %}

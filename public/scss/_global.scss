@@ -1,0 +1,38 @@
+/* Globals */
+
+@charset "UTF-8";
+
+*{
+  &,
+  &:before,
+  &:after{
+    box-sizing: border-box;
+  }
+
+  & + &{
+    margin-top: scale(1);
+  }
+
+  // quick reset
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+// HTML5 display-role reset for older browsers
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+html, body{
+  overflow-x: hidden;
+  max-width: 100%;
+  height: 100%;
+
+  margin: 0;
+  padding: 0;
+}
