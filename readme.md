@@ -16,16 +16,19 @@ Wait till each step is complete before moving on to the next!
   1. open `~/.homestead/Homestead.yaml`
   1. add the paths to your public key under `keys` and private key under `authorize`
 
-### Local install
+### Local setup
 
 1. clone this repo
-1. run `$ npm install`
+1. get the latest version of Craft
+  1. run ``
+1. run `$ npm install && bower install`
+1. create a local mysql db
 1. update your homestead settings:
   1. open `~/.homestead/Homestead.yaml`
-  1. add the folders (adjust paths to match your setup), local url, and database for the site (see below)
-1. add `192.168.10.10 yoursite.dev` to `/etc/hosts`
+  1. add the folders (adjust paths to match your setup), local url, and database for the site (see example below)
+1. add `192.168.56.102 yoursite.dev` to `/etc/hosts`
 1. launch the vagrant box `homestead up`
-1. go to [the site admin](http://yoursite.dev/admin) in your browser. If you see a monkey, you did it right!
+1. go to [the site admin](http://yoursite.dev/admin) in your browser. If you see a monkey, Craft is working!
 
 ```
 // Example homestead.yaml snippet
@@ -51,14 +54,12 @@ databases:
 
 ## Deployment
 
-### Setup
+### Server Setup
 
-1. Use ruby 2.1.9
-1. `$ gem install capistrano`
 1. Verify db credentials in `cap/deploy.rb` `cap/deploy/production.rb`
 1. *optional:* setup the server `$ cap production craft:setup`
 
-### Deploying from master
+### Deploying
 
 `$ git checkout master && cap production deploy`
 
@@ -66,11 +67,11 @@ databases:
 
 ### Tasks
 
-Alongside Capistrano's [various tasks](http://capistranorb.com/), we've added some useful commands for working with Craft websites. Most of the credit for this goes to [Bluegg](https://github.com/Bluegg/craft-deploy), though I've made some minor tweaks.
+Alongside Capistrano's [various tasks](http://capistranorb.com/), there are some useful commands for working with Craft websites. Most of the credit for this goes to [Bluegg](https://github.com/Bluegg/craft-deploy), though I've made some minor tweaks and additions.
 
 #### Databases
 
-Craft deploy can push and pull databases (via mysqldump) between environments:
+Craft deploy can push and pull databases (via mysqldump) between environments. Please note that this is a total replacement of the db.
 
 ```sh
 cap production db:push
